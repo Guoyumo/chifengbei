@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.scss"],"names":[],"mappings":"AAEA;EACI,6BAA4B,EAC/B;;AACD;EACI,eAAc,EACjB;;AACe;EACZ,eAAc,EACjB","file":"app.css","sourcesContent":["\r\n\r\n.no-bg-color{\r\n    background:unset !important;\r\n}\r\n.element_a_style{\r\n    color:#3097D1;\r\n}\r\n.element_a_style:hover{\r\n    color:#337ab7;\r\n}"]}

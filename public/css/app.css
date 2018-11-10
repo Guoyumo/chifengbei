@@ -1,0 +1,10 @@
+.no-bg-color {
+  background: unset !important; }
+
+.element_a_style {
+  color: #3097D1; }
+
+.element_a_style:hover {
+  color: #337ab7; }
+
+/*# sourceMappingURL=app.css.map */
