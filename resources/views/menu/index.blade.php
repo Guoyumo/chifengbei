@@ -117,6 +117,7 @@
                             <div class="frm_controls frm_vertical_pt">
                                 <label class="frm_radio_label js_radio_sendMsg" @click="radio_label_selected(1)" :class="[{selected:showMenuContentType===1}]" data-editing="0"> <i class="icon_radio"></i> <span class="lbl_content">Send Message</span> <input type="radio" name="hello" class="frm_radio" /> </label>
                                 <label class="frm_radio_label js_radio_url" @click="radio_label_selected(2)" :class="[{selected:showMenuContentType===2}]" data-editing="0"> <i class="icon_radio"></i> <span class="lbl_content">WEB Page</span> <input type="radio" name="hello" class="frm_radio" /> </label>
+                                <label class="frm_radio_label js_radio_url" @click="radio_label_selected(3)" :class="[{selected:showMenuContentType===3}]" data-editing="0"> <i class="icon_radio"></i> <span class="lbl_content">小程序</span> <input type="radio" name="hello" class="frm_radio" /> </label>
                             </div>
                         </div>
                         <div class="menu_content_container">
@@ -209,6 +210,7 @@
 	
     <div class="tool_bar tc js_editBox">
         <span id="pubBt" class="btn btn_input btn_primary" style="display: block;" @click="saveData()"><button>Save and Publish</button></span>
+        <span id="pubBt" class="btn btn_input btn_primary" style="display: block;" @click="pushData()"><button>Save and Publish</button></span>
         <!--<a href="javascript:void(0);" class="btn btn_default" id="viewBt" style="display: block;">预览</a>-->
     </div>
 </div>
@@ -391,10 +393,15 @@
                     }
                 }
                 console.log(this.new_menu);
-//                $('#result').html(this.new_menu);
+            //    $('#result').html(this.new_menu);
                 console.log(JSON.parse(JSON.stringify(this.new_menu)));
                 console.log(JSON.stringify(this.new_menu));
-                 var formData = new FormData();
+                 
+
+            },
+            pushData(){
+                debugger
+                var formData = new FormData();
                 formData.append('menu',JSON.stringify(this.new_menu));
                 console.log('{{url("/admin/menus")}}');
                 $.ajax({
@@ -413,7 +420,6 @@
                             alert(result);
                         }
                 });
-
             },
             menu_selected:function (name,index) {
                 //console.log(name);
@@ -523,6 +529,8 @@
                 if(val == 1){
                     this.setType('media_id');
                 }else if(val == 2){
+                    this.setType('view');
+                }else if(val == 3){
                     this.setType('view');
                 }
             },

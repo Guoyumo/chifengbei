@@ -94,6 +94,58 @@ class WechatService {
         Log::debug($result);
     }
 
+    //send template message to user
+
+  public function sendTemplateMessage($openid,$media) {
+    $token = $this->getToken();
+Log::debug("template message");
+ 
+    // $user = User::find($userId);
+    $postData = [
+      //"touser"=>$user['openid'], test send
+      "touser"=>$openid,
+      "template_id"=>"EbIv-WYOBYoL8quv6sJ0zVWVlMpSH-oa-2G5fFzenII",
+      "url"=>"",
+      "data"=>[
+        "first"=>[
+          "value"=>"新订单来了",
+          "color"=>"#173177"
+        ],
+        "keyword1"=>[
+          "value"=>"发件人".$media->name,
+          "color"=>"#173177"
+        ],
+        "keyword2"=>[
+          "value"=>"电话".$media->phone,
+          "color"=>"#173177"
+        ],
+        "keyword3"=>[
+          "vlaue"=>"收件人电话".$media->remark,
+          "color"=>"#173177"
+        ],
+        "keyword4"=>[
+          "vlaue"=>"开始地点".$media->startLocation,
+          "color"=>"#173177"
+        ],
+        "keyword5"=>[
+          "vlaue"=>$media->finishLocation,
+          "color"=>"#173177"
+        ],
+        "remark"=>[
+          "value"=>"新订单 发件人：".$media->name." 送件人电话:".$media->phone." 收件人电话:".$media->remark." 出发地点：".$media->startLocation." 收货地址：".$media->finishLocation." 车型".$media->car,
+          "color"=>"#173177"
+        ]
+      ]
+    ];
+
+    $postData = json_encode($postData,JSON_UNESCAPED_UNICODE);
+    Log::debug($postData);
+    $url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$token;
+    $result = $this->curlCallPost($url,$postData);
+    Log::debug($result);
+  }
+
+
     public function SendImageToUser($openid,$media_id){
         $data=[
             'touser'=>$openid,
@@ -167,6 +219,17 @@ class WechatService {
         $result = $this->curlCallGet($url);
         $result = json_decode($result, true);
         return $result;
+    }
+    public function getOAuthAccessToken($request) {
+        $wechat_config = \App::make('config')->get('services.wechat', []);
+        extract($wechat_config);
+  
+        $code = $request->input('code');
+        $grantType = 'authorization_code';
+        $url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$APPID&secret=$APPSECRET&code=$code&grant_type=$grantType";
+        $json = $this->curlCallGet($url);
+  
+        return json_decode($json, true);
     }
     public function getUserInfoSim($openid) {
         $token = $this->getTokenSim();

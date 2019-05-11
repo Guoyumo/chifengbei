@@ -117,106 +117,211 @@ class CallBackController extends Controller
 
     private function receiveEvent($object){
         $content = "";
-	$dir = public_path() . '/lock/';
-        $lockFile = $dir . $object->FromUserName . '.lock';
         switch ($object->Event){
             case "subscribe":
-		//Log::debug("subscribe: " . $object->EventKey);
                 $EventKey = trim((string)$object->EventKey);
                 if(empty($EventKey)){
-//                    $content = '感谢关注大葡萄，即日起欧缇丽全新会员积分系统上线，立刻点击链接<a href ="https://cn.caudalie.com">绑定账户</a>，赢取免费50积分！';
-                    $content = $this->getSubscribeReply(true);
-                    $result = $this->transmitText($object,$content);
-                    return $result;
+                  $content = '你好，欢迎关注赤峰呗！';
+                  break;
                 }
                 $keyArray = explode("_", $EventKey);
-                if(strpos($keyArray[1], 'crm') !== false) {
-                    $crmId = str_replace('crm','',$keyArray[1]);
-                    Log::debug($keyArray[1]);
-                    if($crmId) {
-                        $welcomeLink = "https://cn.caudalie.com?crm_id=" . $crmId;
-                    } else {
-                        $welcomeLink = "https://cn.caudalie.com";
+                $openid = trim((string)$object->FromUserName);
+        $action = DB::table('q_rcodes')->where('id', $keyArray[1])->first();
+                if($action->media_id == ''){
+                    if($keyArray[1] >= 200 && $keyArray[1] <= 700){
+                        $content = '赤峰小九窝音乐烤吧恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$keyArray[1].'?openid='.$openid.'">点击此处填写挪车电话！</a>';
+                    }else if(($keyArray[1] >= 1301 && $keyArray[1] <= 1400) || ($keyArray[1] >= 1701 && $keyArray[1] <= 1800)){
+                        $content = '赤峰月星二手车恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$keyArray[1].'?openid='.$openid.'">点击此处填写挪车电话！</a>';
+                    }else if($keyArray[1] >= 1401 && $keyArray[1] <= 1500){
+                        $content = '赤峰巨森农资恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$keyArray[1].'?openid='.$openid.'">点击此处填写挪车电话！</a>';
+                    }else if ($keyArray[1] >= 2401 && $keyArray[1] <= 4000){
+                        $content = '赤峰居然之家联手赤百电器恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$keyArray[1].'?openid='.$openid.'">点击此处填写挪车电话！</a>'."\n".'居然之家携手赤百电器打造赤峰顶尖家具家电一站式购买服务平台';
+                    }else if ($keyArray[1] >= 4001 && $keyArray[1] <= 4200){
+                        $content = '龙发家之初装饰恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$keyArray[1].'?openid='.$openid.'">点击此处填写挪车电话！</a>';
+                    }else if ($keyArray[1] >= 4201 && $keyArray[1] <= 4400){
+                        $content = '赤峰奔驰俱乐部携手路捷名车恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$keyArray[1].'?openid='.$openid.'">点击此处填写挪车电话！</a>';
+                    }else if($keyArray[1] >= 4401 && $keyArray[1] <= 4450){
+                        $content = '恒大华府恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$keyArray[1].'?openid='.$openid.'">点击此处填写挪车电话！</a>'. "\n"."双城芯，公园家，御湖名邸";
+                    }else if ($keyArray[1] >= 4501 && $keyArray[1] <= 4700){
+                        $content = '平庄弹个车恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$keyArray[1].'?openid='.$openid.'">点击此处填写挪车电话！</a>';
+                    }else if ($keyArray[1] >= 4451 && $keyArray[1] <= 4500){
+                        $content = '利丰二手车“行认证”恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$keyArray[1].'?openid='.$openid.'">点击此处填写挪车电话！</a>'."\n".'买卖二手，鉴定二手车请找行认证';
+                    }else if ($keyArray[1] >= 2352 && $keyArray[1] <= 2400){
+                        $content = '利丰二手车“行认证”恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$keyArray[1].'?openid='.$openid.'">点击此处填写挪车电话！</a>'."\n".'买卖二手，鉴定二手车请找行认证';
+                    }else if($keyArray[1] >= 4851 && $keyArray[1] <= 4898){
+                        $content = '安信精品车行恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$keyArray[1].'?openid='.$openid.'">点击此处填写挪车电话！</a>';
+                    }else if($keyArray[1] >= 4901 && $keyArray[1] <= 5100){
+                        $content = '悦山壹号恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$keyArray[1].'?openid='.$openid.'">点击此处填写挪车电话！</a>'. "\n"."悦山壹号售房热线：0476-8249000";
+                    }else{
+                        $content = '恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$keyArray[1].'?openid='.$openid.'">点击此处填写挪车电话！</a>';
                     }
-
-//                    $content = '感谢关注大葡萄，即日起欧缇丽全新会员积分系统上线，立刻点击链接<a href ="' .$welcomeLink.'">绑定账户</a>，赢取免费50积分！';
-                    $content = $this->getSubscribeReply(false);
-                    $result = $this->transmitText($object,$content);
-                    return $result;
-                }
-		Log::debug($keyArray[1]);
-
-		if(!file_exists($lockFile)){
-                    if(!file_exists($dir)){
-                        mkdir($dir);
-                    }
-                    file_put_contents($lockFile, 'locked');
+                   
                 }else{
-                    return $content;
-                }
-
-		$action = DB::table('q_rcodes')->where('id', $keyArray[1])->first();
-                if($action->type == 'news'){
-                    $event = new SendArticleToUser();
-                    $event->name = trim((string)$object->FromUserName);
-                    $event->media_id = $action->media_id;
-                    event($event);
-                }
-                if($action->type == 'image'){
-                    $event = new SendImageToUser();
-                    $event->name = trim((string)$object->FromUserName);
-                    $event->media_id = $action->media_id;
-                    event($event);
-                }
-                if($action->type == 'content'){
-                    $event = new SendTextToUser();
-                    $event->name = trim((string)$object->FromUserName);
-                    $event->media_id = $action->media_id;
-                    event($event);
+                    if($action->type != ''){
+                        if($keyArray[1] >= 200 && $keyArray[1] <= 700){
+                            $content="赤峰小九窝音乐烤吧感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type;
+                        }else if(($keyArray[1] >= 1301 && $keyArray[1] <= 1400) || ($keyArray[1] >= 1701 && $keyArray[1] <= 1800)){
+                            $content="赤峰月星二手车感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type;
+                        }else if($keyArray[1] >= 1401 && $keyArray[1] <= 1500){
+                            $content="赤峰巨森农资感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type;
+                        }else if ($keyArray[1] >= 2401 && $keyArray[1] <= 4000){
+                            $content="赤峰居然之家联手赤百电器感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type."\n\n".'居然之家携手赤百电器打造赤峰顶尖家具家电一站式购买服务平台';
+                        }else if ($keyArray[1] >= 4001 && $keyArray[1] <= 4200){
+                            $content="龙发家之初装饰感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type;
+                        }else if ($keyArray[1] >= 4201 && $keyArray[1] <= 4400){
+                            $content="赤峰奔驰俱乐部携手路捷名车感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type."\n\n".'让爱出发   温暖回家';
+                        }else if($keyArray[1] >= 4401 && $keyArray[1] <= 4450){
+                            $content="恒大华府恭喜感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type."\n\n".'双城芯，公园家，御湖名邸';
+                        }else if ($keyArray[1] >= 4501 && $keyArray[1] <= 4700){
+                            $content="平庄弹个车感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type."\n\n".'阿里巴巴一成首付弹个车——平庄吉祥花园店宣';
+                        }else if ($keyArray[1] >= 4451 && $keyArray[1] <= 4500){
+                             $content="利丰二手车“行认证”感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type."\n\n".'“行认证”，由中国汽车流通协会背书推出，基于国标GB/T 30323-2013技术规范打造；以服务消费者、为消费者提供可靠的购车保障为根本宗旨，立足于帮您挑选到优质的爱车，以专业的检测技术和诚信品质，保障您的购车利益不受侵害。行认证检测能力能覆盖全国110个城市，2018年11月入驻利丰二手车交易市场.';
+                        }else if ($keyArray[1] >= 2352 && $keyArray[1] <= 2400){
+                             $content="利丰二手车“行认证”感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type."\n\n".'“行认证”，由中国汽车流通协会背书推出，基于国标GB/T 30323-2013技术规范打造；以服务消费者、为消费者提供可靠的购车保障为根本宗旨，立足于帮您挑选到优质的爱车，以专业的检测技术和诚信品质，保障您的购车利益不受侵害。行认证检测能力能覆盖全国110个城市，2018年11月入驻利丰二手车交易市场.';
+                        }else if($keyArray[1] >= 4851 && $keyArray[1] <= 4898){
+                             $content="感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type;
+                        }else if($keyArray[1] >= 4901 && $keyArray[1] <= 5100){
+                            $content="悦山壹号感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type."\n\n".'悦山壹号售房热线：0476-8249000';
+                        }else{
+                            $content="安信精品车行感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type;
+                        }
+                        
+                     }else{
+                        if($keyArray[1] >= 200 && $keyArray[1] <= 700){
+                            $content="赤峰小九窝音乐烤吧感谢您使用赤峰挪呗\n车主电话".$action->media_id;
+                        }else if(($keyArray[1] >= 1301 && $keyArray[1] <= 1400) || ($keyArray[1] >= 1701 && $keyArray[1] <= 1800)){
+                           $content="赤峰月星二手车感谢您使用赤峰挪呗\n车主电话".$action->media_id;
+                        }else if($keyArray[1] >= 1401 && $keyArray[1] <= 1500){
+                            $content="赤峰巨森农资感谢您使用赤峰挪呗\n车主电话".$action->media_id;
+                        }else if ($keyArray[1] >= 2401 && $keyArray[1] <= 4000){
+                             $content="赤峰居然之家联手赤百电器感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n\n".'居然之家携手赤百电器打造赤峰顶尖家具家电一站式购买服务平台';
+                        }else if ($keyArray[1] >= 4001 && $keyArray[1] <= 4200){
+                            $content="龙发家之初装饰感谢您使用赤峰挪呗\n车主电话".$action->media_id;
+                        }else if ($keyArray[1] >= 4201 && $keyArray[1] <= 4400){
+                             $content="赤峰奔驰俱乐部携手路捷名车感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n\n".'让爱出发   温暖回家';
+                        }else if($keyArray[1] >= 4401 && $keyArray[1] <= 4450){
+                            $content="恒大华府感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n\n".'双城芯，公园家，御湖名邸';
+                        }else if ($keyArray[1] >= 4501 && $keyArray[1] <= 4700){
+                             $content="平庄弹个车感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n\n".'阿里巴巴一成首付弹个车——平庄吉祥花园店宣';
+                        }else if ($keyArray[1] >= 4451 && $keyArray[1] <= 4500){
+                            $content="利丰二手车“行认证”感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n\n".'“行认证”，由中国汽车流通协会背书推出，基于国标GB/T 30323-2013技术规范打造；以服务消费者、为消费者提供可靠的购车保障为根本宗旨，立足于帮您挑选到优质的爱车，以专业的检测技术和诚信品质，保障您的购车利益不受侵害。行认证检测能力能覆盖全国110个城市，2018年11月入驻利丰二手车交易市场.';
+                        }else if ($keyArray[1] >= 2352 && $keyArray[1] <= 2400){
+                            $content="利丰二手车“行认证”感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n\n".'“行认证”，由中国汽车流通协会背书推出，基于国标GB/T 30323-2013技术规范打造；以服务消费者、为消费者提供可靠的购车保障为根本宗旨，立足于帮您挑选到优质的爱车，以专业的检测技术和诚信品质，保障您的购车利益不受侵害。行认证检测能力能覆盖全国110个城市，2018年11月入驻利丰二手车交易市场.';
+                        }else if($keyArray[1] >= 4851 && $keyArray[1] <= 4898){
+                             $content="安信精品车行感谢您使用赤峰挪呗\n车主电话".$action->media_id;
+                        }else if($keyArray[1] >= 4901 && $keyArray[1] <= 5100){
+                            $content="悦山壹号感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n\n".'悦山壹号售房热线：0476-8249000';
+                        }else{
+                             $content="感谢您使用赤峰挪呗\n车主电话".$action->media_id;
+                        }
+                        
+                     }
                 }
 
 		   
                 break;
             case "SCAN":
-	        if(!file_exists($lockFile)){
-                    if(!file_exists($dir)){
-                	mkdir($dir);
-            	    }
-            	    file_put_contents($lockFile, 'locked');
-        	}else{
-	            return $content;
-        	}
                 $EventKey = trim((string)$object->EventKey);
+                $openid = trim((string)$object->FromUserName);
                 $action = DB::table('q_rcodes')->where('id', $EventKey)->first();
-                if($action->type == 'news'){
-                    $event = new SendArticleToUser();
-                    $event->name = trim((string)$object->FromUserName);
-                    $event->media_id = $action->media_id;
-                    event($event);
-                }
-                if($action->type == 'image'){
-                    $event = new SendImageToUser();
-                    $event->name = trim((string)$object->FromUserName);
-                    $event->media_id = $action->media_id;
-                    event($event);
-                }
-                if($action->type == 'content'){
-                    $event = new SendTextToUser();
-                    $event->name = trim((string) $object->FromUserName);
-                    $event->media_id = $action->media_id;
-                    event($event);
-                }
+                if($action->media_id == ''){
+                    if($EventKey >= 200 && $EventKey <= 700){
+                        $content = '赤峰小九窝音乐烤吧恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$EventKey.'?openid='.$openid.'">点击此处填写挪车电话！</a>';
+                    }else if(($EventKey >= 1301 && $EventKey <= 1400) || ($EventKey >= 1701 && $EventKey <= 1800)){
+                         $content = '赤峰月星二手车恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$EventKey.'?openid='.$openid.'">点击此处填写挪车电话！</a>';
+                    }else if($EventKey >= 1401 && $EventKey <= 1500){
+                         $content = '赤峰巨森农资恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$EventKey.'?openid='.$openid.'">点击此处填写挪车电话！</a>';
+                    }else if ($EventKey >= 2401 && $EventKey <= 4000){
+                        $content = '赤峰居然之家联手赤百电器恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$EventKey.'?openid='.$openid.'">点击此处填写挪车电话！</a>'."\n".'居然之家携手赤百电器打造赤峰顶尖家具家电一站式购买服务平台';
+                    }else if ($EventKey >= 4001 && $EventKey <= 4200){
+                         $content = '龙发家之初装饰恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$EventKey.'?openid='.$openid.'">点击此处填写挪车电话！</a>';
+                    }else if ($EventKey >= 4201 && $EventKey <= 4400){
+                         $content = '赤峰奔驰俱乐部携手路捷名车恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$EventKey.'?openid='.$openid.'">点击此处填写挪车电话！</a>';
+                    }else if($EventKey >= 4401 && $EventKey <= 4450){
+                        $content = '恒大华府喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$EventKey.'?openid='.$openid.'">点击此处填写挪车电话！</a>';
+                    }else if ($EventKey >= 4501 && $EventKey <= 4700){
+                         $content = '平庄弹个车恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$EventKey.'?openid='.$openid.'">点击此处填写挪车电话！</a>';
+                    }else if ($EventKey >= 4451 && $EventKey <= 4500){
+                        $content = '利丰二手车“行认证”恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$EventKey.'?openid='.$openid.'">点击此处填写挪车电话！</a>'."\n".'买卖二手，鉴定二手车请找行认证';
+                    }else if ($EventKey >= 2352 && $EventKey <= 2400){
+                        $content = '利丰二手车“行认证”恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$EventKey.'?openid='.$openid.'">点击此处填写挪车电话！</a>'."\n".'买卖二手，鉴定二手车请找行认证';
+                    }else if($EventKey >= 4851 && $EventKey <= 4898){
+                        $content = '安信精品车行恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$EventKey.'?openid='.$openid.'">点击此处填写挪车电话！</a>';
+                    }else if($EventKey >= 4901 && $EventKey <= 5100){
+                        $content = '悦山壹号喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$EventKey.'?openid='.$openid.'">点击此处填写挪车电话！</a>'."\n\n".'悦山壹号售房热线：0476-8249000';
+                    }else{
+                        $content = '恭喜您领取一张挪呗挪车二维码，<a href="http://www.chifengbei.com/inputInfo/'.$EventKey.'?openid='.$openid.'">点击此处填写挪车电话！</a>';
+                    }
+                   
+                 }else{
+                     if($action->type != ''){
+                        if($EventKey >= 200 && $EventKey <= 700){
+                            $content="赤峰小九窝音乐烤吧感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type;
+                        }else if(($EventKey >= 1301 && $EventKey <= 1400) || ($EventKey >= 1701 && $EventKey <= 1800)){
+                            $content="赤峰月星二手车感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type;
+                        }else if($EventKey >= 1401 && $EventKey <= 1500){
+                            $content="赤峰巨森农资感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type;
+                        }else if ($EventKey >= 2401 && $EventKey <= 4000){
+                            $content="赤峰居然之家联手赤百电器感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type."\n\n".'居然之家携手赤百电器打造赤峰顶尖家具家电一站式购买服务平台';
+                        }else if ($EventKey >= 4001 && $EventKey <= 4200){
+                             $content="龙发家之初装饰感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type;
+                        }else if ($EventKey >= 4201 && $EventKey <= 4400){
+                            $content="赤峰奔驰俱乐部携手路捷名车感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type."\n\n".'让爱出发   温暖回家';
+                        }else if($EventKey >= 4401 && $EventKey <= 4450){
+                            $content="恒大华府感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type."\n\n".'双城芯，公园家，御湖名邸';
+                        }else if ($EventKey >= 4501 && $EventKey <= 4700){
+                            $content="平庄弹个车感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type."\n\n".'阿里巴巴一成首付弹个车——平庄吉祥花园店宣';
+                        }else if ($EventKey >= 4451 && $EventKey <= 4500){
+                            $content="利丰二手车“行认证”感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type."\n\n".'“行认证”，由中国汽车流通协会背书推出，基于国标GB/T 30323-2013技术规范打造；以服务消费者、为消费者提供可靠的购车保障为根本宗旨，立足于帮您挑选到优质的爱车，以专业的检测技术和诚信品质，保障您的购车利益不受侵害。行认证检测能力能覆盖全国110个城市，2018年11月入驻利丰二手车交易市场.';
+                        }else if ($EventKey >= 2352 && $EventKey <= 2400){
+                            $content="利丰二手车“行认证”感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type."\n\n".'“行认证”，由中国汽车流通协会背书推出，基于国标GB/T 30323-2013技术规范打造；以服务消费者、为消费者提供可靠的购车保障为根本宗旨，立足于帮您挑选到优质的爱车，以专业的检测技术和诚信品质，保障您的购车利益不受侵害。行认证检测能力能覆盖全国110个城市，2018年11月入驻利丰二手车交易市场.';
+                        }else if($EventKey >= 4851 && $EventKey <= 4898){
+                            $content="安信精品车行感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type;
+                        }else if($EventKey >= 4901 && $EventKey <= 5100){
+                            $content="悦山壹号感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type."\n\n".'悦山壹号售房热线：0476-8249000';
+                        }else{
+                            $content="感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n ".$action->type;
+                        }
+                        
+                     }else{
+                        if($EventKey >= 200 && $EventKey <= 700){
+                            $content="赤峰小九窝音乐烤吧感谢您使用赤峰挪呗\n车主电话".$action->media_id;
+                        }else if(($EventKey >= 1301 && $EventKey <= 1400) || ($EventKey >= 1701 && $EventKey <= 1800)){
+                            $content="赤峰月星二手车感谢您使用赤峰挪呗\n车主电话".$action->media_id;
+                        }else if($EventKey >= 1401 && $EventKey <= 1500){
+                            $content="赤峰巨森农资感谢您使用赤峰挪呗\n车主电话".$action->media_id;
+                        }else if ($EventKey >= 2401 && $EventKey <= 4000){
+                             $content="赤峰居然之家联手赤百电器感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n\n".'居然之家携手赤百电器打造赤峰顶尖家具家电一站式购买服务平台';
+                        }else if ($EventKey >= 4001 && $EventKey <= 4200){
+                             $content="龙发家之初装饰感谢您使用赤峰挪呗\n车主电话".$action->media_id;
+                        }else if ($EventKey >= 4201 && $EventKey <= 4400){
+                             $content="赤峰奔驰俱乐部携手路捷名车感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n\n".'让爱出发   温暖回家';
+                        }else if($EventKey >= 4401 && $EventKey <= 4450){
+                             $content="恒大华府感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n\n".'双城芯，公园家，御湖名邸';
+                        }else if ($EventKey >= 4501 && $EventKey <= 4700){
+                             $content="平庄弹个车感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n\n".'阿里巴巴一成首付弹个车——平庄吉祥花园店宣';
+                        }else if ($EventKey >= 2352 && $EventKey <= 2400){
+                            $content="利丰二手车“行认证”感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n\n".'“行认证”，由中国汽车流通协会背书推出，基于国标GB/T 30323-2013技术规范打造；以服务消费者、为消费者提供可靠的购车保障为根本宗旨，立足于帮您挑选到优质的爱车，以专业的检测技术和诚信品质，保障您的购车利益不受侵害。行认证检测能力能覆盖全国110个城市，2018年11月入驻利丰二手车交易市场.';
+                        }else if ($EventKey >= 4451 && $EventKey <= 4500){
+                            $content="利丰二手车“行认证”感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n\n".'“行认证”，由中国汽车流通协会背书推出，基于国标GB/T 30323-2013技术规范打造；以服务消费者、为消费者提供可靠的购车保障为根本宗旨，立足于帮您挑选到优质的爱车，以专业的检测技术和诚信品质，保障您的购车利益不受侵害。行认证检测能力能覆盖全国110个城市，2018年11月入驻利丰二手车交易市场.';
+                        }else if($EventKey >= 4901 && $EventKey <= 5100){
+                            $content="悦山壹号感谢您使用赤峰挪呗\n车主电话".$action->media_id."\n\n".'悦山壹号售房热线：0476-8249000';
+                        }else if($EventKey >= 4851 && $EventKey <= 4898){
+                            $content="安信精品车行感谢您使用赤峰挪呗\n车主电话".$action->media_id;
+                        }else{
+                            $content="感谢您使用赤峰挪呗\n车主电话".$action->media_id;
+                        }
+                        
+                     }
+                     
+                 }
 		break;
 		default:
-                $content = "";
+                $content = "你好，欢迎关注赤峰呗！";
                 break;
         }
-        $this->callCRMApi($object);
-	if(file_exists($lockFile)){
-            unlink($lockFile);
-        }
-   //     $result = $this->transmitText($object,$content);
-        return $content;
+       $result = $this->transmitText($object,$content);
+        return $result;
     }
 
     private function transmitText($object,$content)

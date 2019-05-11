@@ -5,25 +5,27 @@
         <div class="col-md-12">
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">{{trans('admin.qr_code_list')}}</h3>
-              <a class="btn-sm btn-info" href="{{ url('admin/qRcodes/create') }}" role="button">{{trans('admin.create_qr_code')}}</a>
+              <h3 class="box-title">二维码列表</h3>
+              <a class="btn-sm btn-info" href="{{ url('admin/qRcodes/create') }}" role="button">新建二维码</a>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table class="table table-bordered">
                 <tr>
                   <th style="width: 10px">#</th>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>Created Time</th>
-                  <th>Action</th>
+                  <th>名称</th>
+                  <th>车主姓名</th>
+                  <th>车主电话</th>
+                  <th>微信id</th>
+                  <th>操作</th>
                 </tr>
                 @foreach ($qrcodes as $index=>$qrcode)
                 <tr>
                   <td>{{$qrcode->id}}.</td>
                   <td>{{$qrcode->name}}</td>
                   <td>{{$qrcode->type}}</td>
-                  <td>{{$qrcode->created_at}}</td>
+                  <td>{{$qrcode->media_id}}</td>
+                  <td>{{$qrcode->openid}}</td>
                   <td>
                     <a href="{{url('admin/qRcodes/'.$qrcode->id)}}">
                         <i class="fa fa-book fa-2x"></i>
@@ -34,15 +36,6 @@
                     <a href="{{url('admin/qRcodes/'.$qrcode->id.'/download')}}">
                         <i class="fa fa-cloud-download fa-2x"></i>
                     </a>
-
-                    <form action="{{url('admin/qRcodes/'.$qrcode->id)}}" method="POST" style="display: inline-block;" onsubmit="return confirm('{{trans('common.are_you_sure')}}')">
-                        {{ csrf_field() }}
-                        {{ method_field('DELETE') }}
-
-                        <button type="submit" class="no-border no-padding no-bg-color element_a_style">
-                            <i class="fa fa-remove fa-2x"></i>
-                        </button>
-                    </form>
                   </td>
                 </tr>
                 @endforeach

@@ -13,6 +13,7 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         //
-	'get_return'
+    'get_return',
+    'createOrder'
     ];
 }

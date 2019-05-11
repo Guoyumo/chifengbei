@@ -29,13 +29,9 @@ class QRcodeController extends Controller
     public function create(WechatService $wechat)
     {
         //
-        $count = $wechat->getMaterialCount(); 
-        // $count = [
-        //    'image_count'=>5,
-        //    'news_count' =>5
-        // ];
+        // $count = $wechat->getMaterialCount(); 
         // var_dump($count['image_count']);exit;
-        return view('qrcode.create',['image_count'=>$count['image_count'],'news_count'=>$count['news_count']]);
+        return view('qrcode.create');
     }
 
     /**
@@ -49,8 +45,8 @@ class QRcodeController extends Controller
         //
         $qrCode = new QRcode; 
         $qrCode->name = $request->input('name');
-        $qrCode->type = $request->input('type');
-        $qrCode->media_id = $request->input('media_id');
+        $qrCode->type = "";
+        $qrCode->media_id = "";
         $qrCode->save();
         $wechat->generatePermanentQRcode($qrCode->id);
         return redirect('/admin/qRcodes/' . $qrCode->id);
@@ -77,12 +73,11 @@ class QRcodeController extends Controller
     public function edit(QRcode $qRcode,WechatService $wechat)
     {
         //
-        $count = $wechat->getMaterialCount(); 
         // $count = [
         //    'image_count'=>5,
         //    'news_count' =>5
         // ];
-        return view('qrcode.edit',['qrcode'=>$qRcode,'image_count'=>$count['image_count'],'news_count'=>$count['news_count']]);
+        return view('qrcode.edit',['qrcode'=>$qRcode]);
     }
 
     /**
@@ -96,8 +91,8 @@ class QRcodeController extends Controller
     {
         //
         $qRcode->name = $request->input('name');
-        $qRcode->type = $request->input('type');
-        $qRcode->media_id = $request->input('media_id');
+        // $qRcode->type = $request->input('type');
+        // $qRcode->media_id = $request->input('media_id');
         $qRcode->save();
         return redirect('/admin/qRcodes/' . $qRcode->id);
     }
@@ -130,5 +125,30 @@ class QRcodeController extends Controller
         print $image;
 
         ob_end_flush();
+    }
+
+    public function inputInfo($id)
+    {
+        return view('inputInfo',['id'=>$id]);
+    }
+    public function updateCarOwnerInfo(Request $request){
+        $id = $request->input('id');
+        $phone = " /^((\+?[0-9]{1,4})|(\(\+86\)))?(13[0-9]|14[57]|15[012356789]|16[6]|17[035678]|18[0-9]|19[8-9])\d{8}$/";
+        preg_match($phone, $request->input('carOwnerPhone'), $matchephone, PREG_OFFSET_CAPTURE);
+        if($request->input('carOwnerPhone') == "" || sizeof($matchephone) == 0){
+            return view('signFail');
+        }
+        $qrCode = QRcode::where('id',$id)->first();
+        $qrCode->type = $request->input('carOwner');
+        $qrCode->media_id = $request->input('carOwnerPhone');
+        $qrCode->openid = $request->input('openid');
+        $qrCode->save();
+        return redirect('signSuccess');
+    }
+    public function changeQRcodeInfoList(Request $request){
+        $userInfo = $request->session()->get('userInfo');
+        $openid = $userInfo['openid'];
+        $qrcodes = QRcode::where('openid',$openid)->get();
+        return view('changeQRcodeInfoList',['qrcodes'=>$qrcodes]);
     }
 }

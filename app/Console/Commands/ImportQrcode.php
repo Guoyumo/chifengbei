@@ -45,29 +45,37 @@ class ImportQrcode extends Command
         //     ['id' => 49, 'name' => 'test','type'=>'content','media_id'=>'content']
         // );
         // $wechat->generatePermanentQRcode(49);
-        $path = public_path();
-        $row = 1;
-        $file = fopen($path."/qrcode.csv", "r");
-        while (($data = fgetcsv($file, 1000, ",")) !== FALSE) {
-            $num = count($data);
-            $row++;
-            if(isset($data[1])){
-                $this->info($data[1]);
-                $qrcode = DB::table('q_rcodes')->insert(
-                    ['id' => $data[1], 'name' => $data[0],'type'=>'content','media_id'=>'欧缇丽臻美亮白精华液了解一下！成分安全，淡化斑点痘印、亮白肤色，孕妇也可以安心使用！超值套装火热销售中']
-                );
-                $wechat->generatePermanentQRcode($data[1]);
-            }else{
-                $explode = explode(',',$data[0]);
-                $this->comment($explode[1]);
-                $qrcode = DB::table('q_rcodes')->insert(
-                    ['id' => $explode[1], 'name' => $explode[0],'type'=>'content','media_id'=>'欧缇丽臻美亮白精华液了解一下！成分安全，淡化斑点痘印、亮白肤色，孕妇也可以安心使用！超值套装火热销售中']
-                );
-                $wechat->generatePermanentQRcode($explode[1]);
-            }  
+//        $path = public_path();
+//        $row = 1;
+//        $file = fopen($path."/qrcode.csv", "r");
+//        while (($data = fgetcsv($file, 1000, ",")) !== FALSE) {
+//            $num = count($data);
+//            $row++;
+//            if(isset($data[1])){
+//                $this->info($data[1]);
+//                $qrcode = DB::table('q_rcodes')->insert(
+//                    ['id' => $data[1], 'name' => $data[0],'type'=>'content','media_id'=>'欧缇丽臻美亮白精华液了解一下！成分安全，淡化斑点痘印、亮白肤色，孕妇也可以安心使用！超值套装火热销售中']
+//                );
+//                $wechat->generatePermanentQRcode($data[1]);
+//            }else{
+//                $explode = explode(',',$data[0]);
+//                $this->comment($explode[1]);
+//                $qrcode = DB::table('q_rcodes')->insert(
+//                    ['id' => $explode[1], 'name' => $explode[0],'type'=>'content','media_id'=>'欧缇丽臻美亮白精华液了解一下！成分安全，淡化斑点痘印、亮白肤色，孕妇也可以安心使用！超值套装火热销售中']
+//                );
+//                $wechat->generatePermanentQRcode($explode[1]);
+//            }  
             
 
-        }
-        fclose($file);
+//        }
+//        fclose($file);
+	for($i = 4901; $i <= 5100; $i++){ 
+        $this->info($i);
+        $qrcode = DB::table('q_rcodes')->insert(
+            ['id' => $i, 'name' => 'script_created_'.$i,'type'=>'','media_id'=>'']
+        );
+        $wechat->generatePermanentQRcode($i);
+    }
+	
     }
 }

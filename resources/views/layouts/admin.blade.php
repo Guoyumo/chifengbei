@@ -83,10 +83,11 @@
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">Menu</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li><a href="{{ url('admin/qRcodes') }}"><i class="fa fa-link"></i> <span>{{trans('admin.qr_code')}}</span></a></li>
-                <li><a href="{{ url('admin/menus') }}"><i class="fa fa-link"></i> <span>{{trans('admin.menu')}}</span></a></li>
-                <li><a href="{{ url('admin/autoReplys') }}"><i class="fa fa-link"></i> <span>{{trans('admin.auto_reply')}}</span></a></li>
-                <li><a href="{{ url('admin/subscribeReplys') }}"><i class="fa fa-link"></i> <span>{{trans('admin.subscribe_reply')}}</span></a></li>
+                <li><a href="{{ url('admin/qRcodes') }}"><i class="fa fa-link"></i> <span>二维码管理</span></a></li>
+                <li><a href="{{ url('admin/menus') }}"><i class="fa fa-link"></i> <span>菜单管理</span></a></li>
+                <li><a href="{{ url('admin/orders') }}"><i class="fa fa-link"></i> <span>订单列表</span></a></li>
+                <li><a href="{{ url('admin/stores') }}"><i class="fa fa-link"></i> <span>商家列表</span></a></li>
+                <!-- <li><a href="{{ url('admin/subscribeReplys') }}"><i class="fa fa-link"></i> <span>{{trans('admin.subscribe_reply')}}</span></a></li> -->
             </ul>
             <!-- /.sidebar-menu -->
         </section>

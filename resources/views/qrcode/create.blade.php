@@ -1,51 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
-    <!-- <div class="row" id="createQRcode">
-        <div class="col-md-8">           
-            <form action="{{url('admin/qrcodes')}}" method="post">
-                {{ csrf_field() }}
-                <div class="form-group">
-                    <label for="name">{{trans('admin.qr_code_name')}}</label>
-                    <input type="text"  name="name" class="form-control" id="name" placeholder="{{trans('admin.qr_code_name')}}">
-                </div>
-                <div class="form-group">
-                    <label for="qr_code_type">{{trans('admin.qr_code_name')}}</label>
-                    <select class="form-control" name="type" v-model="type" id="qr_code_type">
-                        <option value="content">content</option>
-                        <option value="image">image</option>
-                        <option value="news">article</option>
-                    </select>
-                </div>
-                <div class="form-group " v-if="showContent">
-                    <label for="qr_code_type">{{trans('admin.media_id')}}</label>
-                    <textarea class="form-control" rows="3" id="reply_content" name="media_id"></textarea>
-                </div>
-                <div class="form-group " v-if="showImage">
-                    <label v-for="image in imageList">
-                        <input type="radio" name="media_id" :value="image.media_id">@{{image.name}}
-                    </label>
-                </div>
-                <div class="form-group " v-if="showArticle">
-                    <label v-for="article in articleList">
-                        <input type="radio" name="media_id" :value="article.media_id">@{{article.content[0].title}}
-                    </label>
-                </div>
-                <h6>Center alignment</h6>
-                <b-pagination align="center" :total-rows="100" v-model="articleCurrentPage" :per-page="10">
-                </b-pagination>
-                <br>
-
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
-       
-        </div>
-    </div> -->
-
     <div class="col-md-1"></div>
     <div class="box box-success col-md-10" id="createQRcode">
             <div class="box-header with-border">
-              <h3 class="box-title">{{trans('admin.create_qr_code')}}</h3>
+              <h3 class="box-title">创建二维码</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -53,59 +12,17 @@
             {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
-                    <label for="name" :style="{color:colorName}" class="col-sm-2 control-label">{{trans('admin.qr_code_name')}}</label>
+                    <label for="name" :style="{color:colorName}" class="col-sm-2 control-label">二维码名称</label>
                     <div class="col-sm-10">
-                        <input type="text"  v-model="name" name="name" class="form-control" id="name" placeholder="{{trans('admin.qr_code_name_place_holder')}}">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="qr_code_type"  class="col-sm-2 control-label">{{trans('admin.qr_code_type')}}</label>
-                    <div class="col-sm-10">
-                        <select class="form-control" name="type" v-model="type" id="qr_code_type">
-                            <option value="content">content</option>
-                            <option value="image">image</option>
-                            <option value="news">news</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group " style="max-height: 500px; overflow-y: scroll;">
-                    <label for="qr_code_type" class="col-sm-2 control-label">{{trans('admin.media_id')}}</label>
-                    <div class="col-sm-10" v-if="showContent">
-                        <textarea class="form-control" rows="3" id="reply_content" name="media_id"></textarea>
-                    </div>
-                    <div class="radio" v-if="showImage" v-for="image in imageList" v-show="!(image.name == 'CropImage')">
-                        <div class="col-sm-2" v-if="!(image.name == 'CropImage')"></div>
-                        <div class="col-sm-10" v-if="!(image.name == 'CropImage')">
-                        <label>
-                            <input type="radio" name="media_id" :value="image.media_id">
-                            @{{image.name}}
-                        </label>
-                        </div>
-                    </div>
-                    <div class="radio" v-if="showArticle" v-for="article in articleList">
-                        <div class="col-sm-2"></div>
-                        <div class="col-sm-10">
-                            <labe>
-                                <input type="radio" name="media_id" :value="article.media_id">@{{article.content[0].title}} 
-                            </label>
-                        </div>
+                        <input type="text"  v-model="name" name="name" class="form-control" id="name" placeholder="不得大于36字节">
                     </div>
                 </div>
 
               </div>
-              <div class="col-md-12 text-center">
-              <b-pagination align="right" :total-rows="{{$image_count}}" v-if="showImage" v-model="imageCurrentPage" :per-page="20">
-              </b-pagination> 
-              <b-pagination align="right" :total-rows="{{$news_count}}" v-if="showArticle" v-model="articleCurrentPage" :per-page="20">
-              </b-pagination>
-              </div>
-              <div style="display:none;">
-                @{{paginateImage}}   @{{paginateNews}} 
-              </div>
+
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-info pull-right" style="line-height:unset;">{{trans('admin.create')}}</button>
+                <button type="submit" class="btn btn-info pull-right" style="line-height:unset;">创建</button>
               </div>
               <!-- /.box-footer -->
             </form>
@@ -167,7 +84,7 @@
             type:'getMaterialList',
         },
         mounted:function(){
-            console.log('{{$image_count}}');
+            
         },
         computed:{
            paginateImage :function(){

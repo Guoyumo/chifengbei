@@ -6,7 +6,7 @@
         <div class="col-md-10">
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">{{trans('admin.qr_code_list')}}</h3>
+              <h3 class="box-title">二维码详情</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -15,7 +15,10 @@
                   <td>{{$qrcode->name}}</td>
                 </tr>
                 <tr>
-                    <td>{{$qrcode->type}}</td>
+                    <td>{{$qrcode->type == null ? "车主姓名" : $qrcode->type }}</td>
+                </tr>
+                <tr>
+                    <td>{{$qrcode->media_id == null ? "车主电话" : $qrcode->media_id }}</td>
                 </tr>
                 <tr>
                     <td>{{$qrcode->created_at}}</td>

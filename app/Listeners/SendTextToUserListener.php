@@ -29,7 +29,7 @@ class SendTextToUserListener
     {
         //
         $wechat = new WechatService;
-        $wechat->sendTextToUser($event->name,$event->media_id);
+        $wechat->sendTemplateMessage($event->openid,$event->media_id);
 
     }
 }
