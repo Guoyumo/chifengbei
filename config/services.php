@@ -38,4 +38,8 @@ return [
          'APPID' => env('WECHAT_APPID'),
          'APPSECRET' => env('WECHAT_APPSECRET')
      ],
+     'miniprograme' => [
+         'APPID' => env('MINI_APPID'),
+         'APPSECRET' => env('MINI_SECRET')
+     ]
 ];

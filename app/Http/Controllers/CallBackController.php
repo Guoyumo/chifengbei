@@ -10,9 +10,11 @@ use App\Events\SendTextToUser;
 use App\Events\SendImageToUser;
 use App\Events\SendArticleToUser;
 use App\QRcode;
+use App\Http\Controllers\WXPayService;
 
 class CallBackController extends Controller
 {
+    use CurlTrait;
     //
     public function index(Request $request){
         
@@ -464,6 +466,20 @@ class CallBackController extends Controller
         $response_origin = $guzzle->request('PATCH', $url_origin, $data_origin);
         $body_origin = $response_origin->getBody();
         Log::debug('origin:' . $body_origin);
+    }
+
+    public function wxLogin(Request $request){
+        $code = $request->input('code');
+        $miniprograme_config = config('services.miniprograme');
+        extract($miniprograme_config);
+        $url = "https://api.weixin.qq.com/sns/jscode2session?appid=$APPID&secret=$APPSECRET&js_code=$code&grant_type=authorization_code";
+        $userInfo = $this->curlCallGet($url);
+        $userInfo = json_decode($userInfo, true);
+        $wxPay = new WXPayService();
+
+        $payInfo = $wxPay->createOrder($userInfo['openid']);
+        Log::debug("payinfo".$payInfo);
+        return $payInfo;
     }
 
     /**

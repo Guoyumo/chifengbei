@@ -69,6 +69,7 @@ Route::post("inputCarOwnerInfo",'QRcodeController@updateCarOwnerInfo');
 Route::post("createOrder", 'OrderController@createOrder');
 Route::get("getStore", 'StoreController@getStore');
 Route::get("getStoreDetail", 'StoreController@getStoreDetail');
+Route::get("wxLogin",'CallBackController@wxLogin');
 
 
 

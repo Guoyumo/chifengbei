@@ -149,4 +149,17 @@ trait CurlTrait {
       fwrite($fp, $raw);
       fclose($fp);
   }
+
+  protected function curlCallXML($url, $input_xml) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+// Following line is compulsary to add as it is:
+    curl_setopt($ch, CURLOPT_POSTFIELDS,
+                "xmlRequest=" . $input_xml);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 300);
+    $res = curl_exec($ch);
+    curl_close($ch);
+    return $res;
+}
 }
