@@ -134,7 +134,7 @@ Log::debug("新订单 发件人：".$request->name."送件人电话:".$request->
         $order->booking = $booking;
 
         $order->save();
-        return $response->json($order->id);
+        return $order->id;
       
     }
 }
