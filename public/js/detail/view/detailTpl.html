@@ -1,0 +1,75 @@
+<!-- swiper title -->
+<div class="detail-item">
+  <div class="swiper-container detail-swiper-heigh">
+    <div class="swiper-wrapper">
+      <img class="swiper-slide" src="<%= detailList.image %>" alt="">
+      <img class="swiper-slide" src="<%= detailList.image1 %>" alt="">
+      <img class="swiper-slide" src="<%= detailList.image2 %>" alt="">
+      <img class="swiper-slide" src="<%= detailList.image3 %>" alt="">
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+  <div class="detail-price">￥<%= detailList.price %><span>已售<%= detailList.qty %>件</span></div>
+</div>
+<div class="detail-title"><%= detailList.name %></div>
+<div class="detail-power indent">一天退换 · 市内免邮 · 直营店铺</div>
+<!-- select -->
+<div class="weui-cells weui-cells_form detail-type">
+  <div class="weui-cell">
+    <div class="weui-cell__hd"><label for="size" class="weui-label">选择尺码</label></div>
+    <div class="weui-cell__bd">
+      <input class="weui-input" id="size" type="text" value="">
+    </div>
+  </div>
+  <div class="weui-cell">
+    <div class="weui-cell__hd"><label for="color" class="weui-label">选择颜色</label></div>
+    <div class="weui-cell__bd">
+      <input class="weui-input" id="color" type="text" value="">
+    </div>
+  </div>
+</div>
+<!-- footer -->
+<div class="detail-note">
+  <h1>宝贝详情</h1>
+  <p><%= detailList.note %></p>
+</div>
+<div class="footer-bar weui-flex">
+  <div class="weui-cell">
+    <div class="weui-cell__bd">
+      <p class="buy-amount">数量</p>
+    </div>
+    <div class="weui-cell__ft">
+      <div class="weui-count">
+        <a class="weui-count__btn weui-count__decrease"></a>
+        <input class="weui-count__number" type="number" value="1" />
+        <a class="weui-count__btn weui-count__increase"></a>
+      </div>
+    </div>
+  </div>
+  <div class="booter-bar-botton cell-phone">
+    <a href="tel:<%=detailList.phone %> ">联系商家</a>
+  </div>
+  <!-- <div class="booter-bar-botton detail-buy" id="detail-buy">
+    <span> 立即购买</span>
+  </div> -->
+</div>
+<script>
+  //select
+  $("#size").select({
+    title: "请选择尺码",
+    items: ['l', 'X', 'XL', 'XXL', 'XXXL'],
+    // onChange: function(d) {
+    // console.log(this, d);
+    // },
+    // onClose: function() {
+    // console.log("close");
+    // },
+    // onOpen: function() {
+    // console.log("open");
+    // },
+  });
+  $("#color").select({
+    title: "请选择颜色",
+    items: ["红色", "绿色", "白色", "黑色"]
+  });
+</script>

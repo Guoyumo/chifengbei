@@ -1,0 +1,31 @@
+html, body{
+  background-color: #f1f1f1;
+  font-size: 62.5%;
+}
+.shop-name{
+  height: 2rem;
+  color:#fff;
+  font-size: 1rem;
+  background-color:#AAE1EE;
+  text-align: center;
+  line-height: 2rem;
+}
+.shop-item{
+  display: inline-block;
+  width: 8.25rem;
+  margin: .5rem;
+  background-color: #fff;
+  border-radius: .3rem;
+  box-shadow: 0rem 0.15rem 0.6rem 0rem rgba(210,217,223,1);
+}
+.shop-img{
+  width: 100%;
+  border-radius: .3rem .3rem 0 0;
+}
+.shop-title{
+  padding: 0 .5rem;
+}
+.shop-price{
+  padding: 0 .5rem;
+  color: #e34747
+}

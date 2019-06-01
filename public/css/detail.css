@@ -1,0 +1,122 @@
+html, body {
+  background-color: #f1f1f1;
+}
+
+.swiper-container {
+  height: 10rem;
+}
+
+.swiper-slide {
+  text-align: center;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-pagination-bullet {
+  width: 18px;
+  height: 2rem;
+  text-align: center;
+  line-height: 18px;
+  font-size: 7px;
+  color: #000;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.swiper-pagination-bullet-active {
+  color: #fff;
+  background: #007aff;
+}
+
+.detail-item {
+  /* width: 17.8rem; */
+}
+
+.detail-price {
+  width: 100%;
+  background: linear-gradient(to right, #AAE1EE,	rgb(33, 170, 201));
+  line-height: 2rem;
+  height: 2rem;
+  color: white;
+}
+.detail-type{
+  margin-top: .3rem;
+}
+.detail-title {
+  background-color: white;
+  padding: .25rem;
+}
+.detail-price>span {
+  font-size: .5rem;
+  color: white;
+  margin-left: .7rem;
+}
+.detail-power{
+  background-color: white;
+  font-size: .5rem;
+  color: #F00000;
+}
+.detail-note {
+  background-color: white;
+  margin-top: .3rem;
+  padding: .5rem;
+}
+
+
+.footer-bar {
+  position: sticky;
+  height: 3rem;
+  bottom: 0;
+  background-color: white;
+}
+.buy-amount{
+  margin-right: .5rem;
+  font-size: .7rem;
+  margin-top: .3rem;
+}
+.cell-phone {
+  background: linear-gradient(to right, #AAE1EE	 , rgb(33, 170, 201)		);
+  /* border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem; */
+  border-radius: 2rem;
+  color: #fff;
+}
+.cell-phone a{
+  color:#fff;
+}
+ 
+.detail-buy {
+  background: linear-gradient(to right, 	#f18b42	 ,#f15b42);
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+.booter-bar-botton{
+  margin-top: .5rem;
+  width: 30%;
+  line-height: 2rem;
+  font-size: .7rem;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  height: 2rem;
+  margin-left: 5rem;
+}
+.weui-count .weui-count__btn{
+  background-color: #AAE1EE !important;
+  border: none !important;
+}
+.weui-count .weui-count__btn:before{
+  background-color: white !important;
+}
