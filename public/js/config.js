@@ -32,7 +32,7 @@
       }
     }
   });
-  require(["zepto", "underscore", "utils/stringUtils", "utils/urlUtils"], function($, _, stringUtils, urlUtils) {
+  require(["zepto", "underscore", "utils/stringUtils", "utils/UrlUtils"], function($, _, stringUtils, urlUtils) {
     var ctrlStr = $("script[data-controller]").attr("data-controller");
     var ctrl = ctrlStr.split(',');
     if (ctrl.length > 0) {
