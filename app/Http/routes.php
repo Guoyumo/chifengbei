@@ -16,6 +16,7 @@ Route::group(['middleware' => ['web']], function () {
     // Route::get("inputInfo/{id}",'QRcodeController@inputInfo')->middleware('guest');
     Route::get("inputInfo/{id}",'QRcodeController@inputInfo');
     Route::get("changeQRcodeInfoList",'QRcodeController@changeQRcodeInfoList')->middleware('guest');
+    Route::get("shopList","ShopController@index");
 
 });
 
