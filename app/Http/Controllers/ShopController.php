@@ -19,6 +19,15 @@ class ShopController extends Controller
         return view('shop.index');
     }
 
+    public function shop()
+    {
+        return view('shop.list');
+    }
+    public function detail()
+    {
+        return view('shop.detail');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

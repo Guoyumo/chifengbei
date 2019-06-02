@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
 
     <title>赤峰呗</title>
+    @yield('css')
 </head>
 <body id="app-layout">
 

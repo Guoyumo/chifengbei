@@ -12,7 +12,7 @@ html, body{
 }
 .shop-item{
   display: inline-block;
-  width: 8.25rem;
+  width: 8rem;
   margin: .5rem;
   background-color: #fff;
   border-radius: .3rem;
