@@ -40,7 +40,7 @@ require(["zepto", "underscore", "wx",
             clickable: true,
           },
           autoplay: {
-            delay: 2500,
+            delay: 1000,
           },
           speed: 200,
         });
