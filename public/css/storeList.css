@@ -43,52 +43,100 @@ html, body{
   background: #007aff;
 }
 
-.store-item{
-  /* display: block; */
-  height: 6rem;
-  background-color: #fff;
-  border-radius: .3rem;
-  box-shadow: 0rem 0.15rem 0.6rem 0rem rgba(210,217,223,1);
-  /* width: 17.8rem; */
+.banner-bg{
+  border: .5rem solid #AAE1EE;
+  padding: .5rem;
+  background-color: #FFF;
+}
+.banner-title{
+  text-align-last: center;
+  font-size: 1.5rem;
+  color:#AAE1EE;
+}
+.banner-adress{
+  border: 1px solid #ff5a2b;
+  margin: .2rem .8rem 1rem .8rem;
+}
+.banner-laber{
+  display: inline-block;
+  background: #ff5a2b;
+  color: #FFF;
+  padding: 0 .4rem;
+}
+.banner-adress-content{
+  display: inline-block;
+}
+.banner-image > img{
+  width: 100%;
+}
+.news-list{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 50rem;
   display: flex;
-  margin: .5rem;
+  align-items: flex-start;
 }
-.weui-search-bar{
-  height: 4rem;
-  padding-top: .8rem;
-  background-color: #AAE1EE;
-}
-.search-button{
-  width: 1.6rem;
-  height: 1.3rem;
-  margin-left: .3rem;
-}
-.search-button>img{
-  margin-top: .1rem;
-  margin-left: .1rem;
-}
-.search-input{
-  height: 1.2rem;
-  border-color: white !important;
-}
-.store-img{
-  height: 100%;
+.news-item{
   width: 7rem;
+  margin-right: .5rem;
+  display: inline-flex;
+  flex-wrap: wrap;
 }
+.store-item{
+  width: 8rem;
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+.store-item:nth-child(2n){
+  margin-left: .35rem;
+}
+.store-item:nth-child(2n+1){
+  margin-right: .35rem;
+}
+.news-item > img{
+  width: 100%;
+}
+.store-item > img{
+  width: 100%;
+}
+.news-item:nth-child(2n){
+  margin-top:2rem;
+}
+.news-content{
+  background: #fff;
+  width: 100%;
+}
+.store-detail{
+  background: #fff;
+  width: 100%;
+}
+.news-title{
+  font-size: .8rem;
+  padding: .25rem;
+}
+.store-title{
+  font-size: .8rem;
+  padding: .25rem;
+  text-align: center;
+}
+.news-tips{
+  font-size: .5rem;
+  color: #999;
+  padding: .1rem .25rem;
+}
+.news-go{
+  font-size: .5rem;
+  color: #999;
+  padding: .1rem .25rem;
+  text-align: right;
+}
+
 .store-name{
   margin-left: -1.5rem;
   margin-top: 1rem;
   text-align: center;
 }
-.store-address{
-  font-size: .5rem;
-  margin-top: 2rem;
-  text-indent: .3rem;
-  padding-left: .25rem;
-  color:#999;
-}
-.store-detail{
-}
+
 .goShop{
   color: #FF1000;
   position: absolute;
@@ -98,4 +146,8 @@ html, body{
   padding: .1rem .4rem;
   font-size: .6rem;
   border-radius: .5rem;
+}
+.store-list{
+  background: #FFF;
+  padding: .75rem;
 }
