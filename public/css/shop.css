@@ -49,6 +49,7 @@ html, body{
   background-color: #FFF;
   position: relative;
   padding: .5rem .5rem 20rem;
+  background-image: url('../images/shop_bg.png')
 }
 .banner-title{
   text-align: center;
@@ -67,6 +68,7 @@ html, body{
 }
 .banner-adress-content{
   display: inline-block;
+  color: #000;
 }
 .banner-image{
   width: 12rem;
@@ -106,12 +108,11 @@ html, body{
   flex-wrap: wrap;
 }
 .store-item{
-  width: 45%;
+  width: 48%;
   display: inline-flex;
   flex-wrap: wrap;
-  border: .25rem solid;
-  
-  border-image: linear-gradient(#2d574a,#18ae18) 15 30;
+  border-radius: .3rem;
+  box-shadow: 0rem 0.15rem 0.6rem 0rem rgba(210,217,223,1);
 }
 .store-item:nth-child(2n){
   margin-top: 2rem;
@@ -125,6 +126,7 @@ html, body{
 .store-item > img{
   width: 100%;
   max-height: 5rem;
+  border-radius: .3rem .3rem 0 0;
 }
 .news-item:nth-child(2n){
   margin-top:2rem;
@@ -136,6 +138,7 @@ html, body{
 .store-detail{
   background: #fff;
   width: 100%;
+  border-radius: 0 0 .3rem .3rem;
 }
 .news-title{
   font-size: .8rem;
@@ -145,7 +148,7 @@ html, body{
   font-size: .8rem;
   padding: .25rem;
   text-align: center;
-  background: #e3cfcf
+  
 }
 .news-tips{
   font-size: .5rem;
@@ -176,16 +179,20 @@ html, body{
   border-radius: .5rem;
 }
 .store-list{
-  background: #FFF;
   padding: .75rem;
   display: flex;
   align-items: flex-start;  
   flex-wrap: wrap;
+  background-image: url('../images/shop_content_bg.png');
 }
 .shop-price{
   padding-right: .2rem;
-  font-size: 0.2rem;
+  font-size: 0.5rem;
 }
 .banner-adress-content{
   font-size: .5rem;
+}
+.news-content{
+  overflow: scroll;
+  background-image:url('../images/shop_content_bg.png');
 }
