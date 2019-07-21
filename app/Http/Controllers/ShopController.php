@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\WechatService;
 use App\Http\Requests;
 
 class ShopController extends Controller
@@ -26,6 +26,17 @@ class ShopController extends Controller
     public function detail()
     {
         return view('shop.detail');
+    }
+    public function address()
+    {
+        return view("shop.address");
+    }
+
+    public function shopOrder()
+    {
+         //
+         $wechat = new WechatService;
+         $wechat->sendShopTemplateMessage('oamd-5gCVEtHm-2Gn2PMgFdy1gCo');
     }
 
     /**

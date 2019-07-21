@@ -145,6 +145,45 @@ Log::debug("template message");
     Log::debug($result);
   }
 
+    public function sendShopTemplateMessage($openid){
+        $token = $this->getToken();
+        Log::debug("template message");
+         
+            $postData = [
+              "touser"=>$openid,
+              "template_id"=>"1dd6FeI4LbAa_mpui4xzKsFS3FbXrsS5SKL2N6fMbTY",
+              "url"=>"",
+              "data"=>[
+                "first"=>[
+                  "value"=>"新订单来了",
+                  "color"=>"#173177"
+                ],
+                "keyword1"=>[
+                  "value"=>"商户平台测试消息",
+                  "color"=>"#173177"
+                ],
+                "keyword2"=>[
+                  "value"=>"商户平台测试消息",
+                  "color"=>"#173177"
+                ],
+                "keyword3"=>[
+                  "vlaue"=>"商户平台测试消息",
+                  "color"=>"#173177"
+                ],
+                "remark"=>[
+                  "value"=>"商户平台测试消息",
+                  "color"=>"#173177"
+                ]
+              ]
+            ];
+
+            $postData = json_encode($postData,JSON_UNESCAPED_UNICODE);
+    Log::debug($postData);
+    $url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=".$token;
+    $result = $this->curlCallPost($url,$postData);
+    Log::debug($result);
+    }
+
 
     public function SendImageToUser($openid,$media_id){
         $data=[

@@ -9,7 +9,7 @@
       moment: "libs/moment.min",
       Swiper: "libs/swiper.min"
     },
-    urlArgs: "v=1557392014942", // +  (new Date()).getTime(),
+    urlArgs: "v=1557392014966", // +  (new Date()).getTime(),
     shim: {
       "zepto": {
         exports: "$"

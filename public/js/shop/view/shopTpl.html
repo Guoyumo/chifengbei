@@ -3,15 +3,15 @@
     <div class="banner-title"><%= shopList.storeName %></div>
     <div class="banner-adress">
       <div class="banner-laber">详细地址</div>
-      <div class="banner-adress-content">步行街成天商厦1F201</div>
+      <div class="banner-adress-content"><%= shopList.storeAddress %></div>
     </div>
     <div class="banner-image">
-        <img src="http://k.zol-img.com.cn/sjbbs/7692/a7691515_s.jpg" alt="" width="100%">
+        <img src="<%= shopList.storeBanner%>" alt="" width="100%">
     </div>
     <div class="banner-under"></div>
   </div>
   
-  <div class="news-content">
+  <!-- <div class="news-content">
       <div class="news-list">
   
           <div class="news-item">
@@ -47,15 +47,18 @@
               </div>
           </div>
         </div>
-  </div>
+  </div> -->
   
   <div class="store-list">
+
     <% _.each(shopList.shopList,function(item){ %>
-    <div class="store-item" data-value="<%= item.code %>" width="100%">
-        <img src="<%= item.image %>" alt="">
-      <div class="store-detail">
-        <div class="store-title"><span>新品价：</span><span class="shop-price">¥</span><%= item.price %></div>
+      <div class="news-item j_view_detail" data-value="<%= item.code %>">
+          <img src="<%= item.image %>" alt="" width="100%">
+          <div class="news-content">
+            <div class="news-title"><%= item.title %></div>
+            <div class="news-tips"><span class="shop-price">¥</span><%= item.price %></div>
+            <div class="news-go">>>>>></div>
+          </div>
       </div>
-    </div>
     <% }) %>
   </div>

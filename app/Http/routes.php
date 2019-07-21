@@ -19,6 +19,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get("storeList","ShopController@index");
     Route::get("shop","ShopController@shop");
     Route::get("detail","ShopController@detail");
+    Route::get("address","ShopController@address");
 
 });
 
@@ -73,6 +74,7 @@ Route::post("createOrder", 'OrderController@createOrder');
 Route::get("getStore", 'StoreController@getStore');
 Route::get("getStoreDetail", 'StoreController@getStoreDetail');
 Route::get("wxLogin",'CallBackController@wxLogin');
+Route::post("shopOrder",'ShopController@shopOrder');
 
 
 

@@ -14,6 +14,7 @@ class VerifyCsrfToken extends BaseVerifier
     protected $except = [
         //
     'get_return',
-    'createOrder'
+    'createOrder',
+    'shopOrder'
     ];
 }

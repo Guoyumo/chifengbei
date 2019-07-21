@@ -1,18 +1,20 @@
 define([''], function () {
     return {
         adias:{
-            storeName:"承天商厦阿迪达斯",
+            storeName:"变革男装",
+            storeAddress:"华兴负一层b南区109-110",
+            storeBanner:"http://chifengbei.com/images/shops/demo/demo-logo.jpg",
             shopList:[
                 {
-                    title:"阿迪达斯男鞋",
-                    image:"http://k.zol-img.com.cn/sjbbs/7692/a7691515_s.jpg",
-                    price:227,
+                    title:"男士休闲网鞋",
+                    image:"http://chifengbei.com/images/shops/demo/demo1.png",
+                    price:251,
                     code:"adias1"
                 },
                 {
-                    title:"阿迪达斯男鞋",
-                    image:"http://k.zol-img.com.cn/sjbbs/7692/a7691515_s.jpg",
-                    price:227,
+                    title:"男士帆布休闲鞋",
+                    image:"http://chifengbei.com/images/shops/demo/demo2.png",
+                    price:260,
                     code:"adias2"
                 },
                 {

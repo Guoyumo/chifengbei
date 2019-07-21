@@ -16,7 +16,7 @@ require(["zepto", "underscore", "wx",
           $(this).toggleClass("detail-choose");
         })
         $("#detail-buy").on('click', function() {
-          location.href = "address.html"
+          location.href = "/address"
         })
         //计数器
         var MAX = 99,
@@ -55,6 +55,7 @@ require(["zepto", "underscore", "wx",
       init: function() {
         var code = UrlUtils.getQueryString('code');
         this.details = data[code];
+        console.log(this.details);
         this.render();
       }
     }

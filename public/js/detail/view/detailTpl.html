@@ -15,17 +15,27 @@
 <div class="detail-power indent">一天退换 · 市内免邮 · 直营店铺</div>
 <!-- select -->
 <div class="weui-cells weui-cells_form detail-type">
-  <div class="weui-cell">
-    <div class="weui-cell__hd"><label for="size" class="weui-label">选择尺码</label></div>
+  <div class="weui-cell weui-cell_select weui-cell_select-after">
+    <div class="weui-cell__hd">
+        <label for="" class="weui-label">选择尺码</label>
+    </div>
     <div class="weui-cell__bd">
-      <input class="weui-input" id="size" type="text" value="">
+        <select class="weui-select" name="select2">
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+        </select>
     </div>
   </div>
-  <div class="weui-cell">
+  <div class="weui-cell weui-cell_select weui-cell_select-after">
     <div class="weui-cell__hd"><label for="color" class="weui-label">选择颜色</label></div>
     <div class="weui-cell__bd">
-      <input class="weui-input" id="color" type="text" value="">
-    </div>
+      <select class="weui-select" name="select2">
+          <option value="1">酒红色</option>
+          <option value="2">黄色</option>
+          <option value="3">白色</option>
+      </select>
+  </div>
   </div>
 </div>
 <!-- footer -->
@@ -46,12 +56,12 @@
       </div>
     </div>
   </div>
-  <div class="booter-bar-botton cell-phone">
+  <!-- <div class="booter-bar-botton cell-phone">
     <a href="tel:<%=detailList.phone %> ">联系商家</a>
-  </div>
-  <!-- <div class="booter-bar-botton detail-buy" id="detail-buy">
-    <span> 立即购买</span>
   </div> -->
+  <div class="booter-bar-botton cell-phone" id="detail-buy">
+    <span>预约下单</span>
+  </div>
 </div>
 <script>
   //select

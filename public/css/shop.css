@@ -102,10 +102,11 @@ html, body{
   align-items: flex-start;
 }
 .news-item{
-  width: 7rem;
-  margin-right: .5rem;
+  width: 7.5rem;
+  margin-right: 0.6rem;
   display: inline-flex;
   flex-wrap: wrap;
+  margin-left: .5rem;
 }
 .store-item{
   width: 48%;
@@ -128,8 +129,8 @@ html, body{
   max-height: 5rem;
   border-radius: .3rem .3rem 0 0;
 }
-.news-item:nth-child(2n){
-  margin-top:2rem;
+.news-item{
+  margin-bottom:.75rem;
 }
 .news-content{
   background: #fff;
@@ -151,8 +152,8 @@ html, body{
   
 }
 .news-tips{
-  font-size: .5rem;
-  color: #999;
+  font-size: .7rem;
+  color: #b72222;
   padding: .1rem .25rem;
 }
 .news-go{
@@ -183,7 +184,6 @@ html, body{
   display: flex;
   align-items: flex-start;  
   flex-wrap: wrap;
-  background-image: url('../images/shop_content_bg.png');
 }
 .shop-price{
   padding-right: .2rem;
@@ -194,5 +194,4 @@ html, body{
 }
 .news-content{
   overflow: scroll;
-  background-image:url('../images/shop_content_bg.png');
 }
