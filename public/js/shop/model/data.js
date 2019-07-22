@@ -18,10 +18,28 @@ define([''], function () {
                     code:"adias2"
                 },
                 {
-                    title:"阿迪达斯男鞋",
-                    image:"http://k.zol-img.com.cn/sjbbs/7692/a7691515_s.jpg",
-                    price:227,
+                    title:"彪马精品半袖",
+                    image:"http://chifengbei.com/images/shops/demo/demo3.png",
+                    price:70,
                     code:"adias3"
+                },
+                {
+                    title:"大logo精品半袖",
+                    image:"http://chifengbei.com/images/shops/demo/demo4.png",
+                    price:50,
+                    code:"adias4"
+                },
+                {
+                    title:"高质精品低价半袖",
+                    image:"http://chifengbei.com/images/shops/demo/demo5.png",
+                    price:50,
+                    code:"adias5"
+                },
+                {
+                    title:"男士黄金套装",
+                    image:"http://chifengbei.com/images/shops/demo/demo6.png",
+                    price:260,
+                    code:"adias6"
                 }
             ]
         },

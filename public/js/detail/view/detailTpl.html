@@ -2,10 +2,10 @@
 <div class="detail-item">
   <div class="swiper-container detail-swiper-heigh">
     <div class="swiper-wrapper">
-      <img class="swiper-slide" src="<%= detailList.image %>" alt="">
-      <img class="swiper-slide" src="<%= detailList.image1 %>" alt="">
-      <img class="swiper-slide" src="<%= detailList.image2 %>" alt="">
-      <img class="swiper-slide" src="<%= detailList.image3 %>" alt="">
+      <% _.each(detailList.imageList,function(item){ %>
+        <img class="swiper-slide" src="<%= item %>" alt="">
+      <% }) %>
+      
     </div>
     <div class="swiper-pagination"></div>
   </div>
@@ -21,9 +21,9 @@
     </div>
     <div class="weui-cell__bd">
         <select class="weui-select" name="select2">
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-            <option value="XXL">XXL</option>
+          <% _.each(detailList.size,function(item){ %>
+            <option value="<%= item.key %>"><%= item.value %></option>
+          <% }) %>
         </select>
     </div>
   </div>
@@ -31,9 +31,9 @@
     <div class="weui-cell__hd"><label for="color" class="weui-label">选择颜色</label></div>
     <div class="weui-cell__bd">
       <select class="weui-select" name="select2">
-          <option value="1">酒红色</option>
-          <option value="2">黄色</option>
-          <option value="3">白色</option>
+          <% _.each(detailList.color,function(item){ %>
+            <option value="<%= item.key %>"><%= item.value %></option>
+          <% }) %>
       </select>
   </div>
   </div>
@@ -41,7 +41,10 @@
 <!-- footer -->
 <div class="detail-note">
   <h1>宝贝详情</h1>
-  <p><%= detailList.note %></p>
+  <% _.each(detailList.imageList,function(item){ %>
+    <img class="swiper-slide" src="<%= item %>" alt="">
+  <% }) %>
+  
 </div>
 <div class="footer-bar weui-flex">
   <div class="weui-cell">
