@@ -41,6 +41,27 @@ define([''], function () {
                     price:260,
                     code:"adias6"
                 }
+                ,
+                {
+                    title:"男士简约商务长裤",
+                    image:"http://chifengbei.com/images/shops/demo/demo7.png",
+                    price:100,
+                    code:"adias7"
+                }
+                ,
+                {
+                    title:"卡通大字母半袖",
+                    image:"http://chifengbei.com/images/shops/demo/demo8.png",
+                    price:80,
+                    code:"adias8"
+                }
+                ,
+                {
+                    title:"男士流行乞丐裤",
+                    image:"http://chifengbei.com/images/shops/demo/demo9.png",
+                    price:100,
+                    code:"adias9"
+                }
             ]
         },
         vans:[],

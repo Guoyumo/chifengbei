@@ -20,23 +20,148 @@ define([''], function () {
             ]
         },
         adias2: {
-            name: '阿迪达斯官方adidas 产品2',
-            note: '1949年8月18日以adidas AG名字登记。阿迪达斯原本由两兄弟共同开设，在分道扬镳后，阿道夫的哥哥鲁道夫·达斯勒 （Rudolf Dassler）开设了运动品牌puma。其经典广告语：“没有不可能”（Impossible is nothing）。2011年3月，斥资1.6亿欧元启用全新口号——adidas is all in（全倾全力）。',
-            image: 'https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=d985fb87d81b0ef473e89e5eedc551a1/b151f8198618367aa7f3cc7424738bd4b31ce525.jpg',
-            image1: 'http://img3.imgtn.bdimg.com/it/u=3914950518,3569645197&fm=26&gp=0.jpg',
-            image2: 'http://pic15.nipic.com/20110628/1369025_192645024000_2.jpg',
-            image3: 'http://www.cnr.cn/xjfw/btfw/2011btfw/jkwh/jkwt/20160516/W020160516492035673595.jpg',
-            qty: '13',
-            price: 228,
-            type: [{
-                typeName: "颜色",
-                typeItem: ["红色", "黑色", "白色"]
-              },
-              {
-                typeName: "尺码",
-                typeItem: ["s", "m", "l", "x", "xl", "xxl"]
-              }
-            ],
+          name: '男士帆布休闲鞋',
+          imageList:[
+            "http://chifengbei.com/images/shops/demo/demo2.png"
+          ],
+          qty: '13',
+          phone:17501651755,
+          price: 260,
+          color:[
+            {key:"black",value:"黑色"}
+          ],
+          size:[
+            {key:39,value:39},
+            {key:40,value:40},
+            {key:41,value:41},
+            {key:42,value:42},
+            {key:43,value:43}
+          ]
+        },
+        adias3: {
+          name: '彪马精品半袖',
+          imageList:[
+            "http://chifengbei.com/images/shops/demo/demo3.png",
+            "http://chifengbei.com/images/shops/demo/product1.png",
+          ],
+          qty: '13',
+          phone:17501651755,
+          price: 70,
+          color:[
+            {key:"black",value:"黑色"},
+            {key:"white",value:"白色"},
+
+          ],
+          size:[
+            {key:39,value:"均码"}
+          ]
+        },
+        adias4: {
+          name: '大logo精品半袖',
+          imageList:[
+            "http://chifengbei.com/images/shops/demo/demo4.png",
+            "http://chifengbei.com/images/shops/demo/product2.png",
+          ],
+          qty: '13',
+          phone:17501651755,
+          price: 70,
+          color:[
+            {key:"black",value:"黑色"},
+            {key:"white",value:"白色"},
+
+          ],
+          size:[
+            {key:39,value:"均码"}
+          ]
+        },
+        adias5: {
+          name: '高质精品低价半袖',
+          imageList:[
+            "http://chifengbei.com/images/shops/demo/demo5.png"
+          ],
+          qty: '13',
+          phone:17501651755,
+          price: 50,
+          color:[
+            {key:"black",value:"黑色"},
+            {key:"white",value:"白色"},
+            {key:"gray",value:"灰色"},
+            {key:"pink",value:"粉色"},
+
+          ],
+          size:[
+            {key:39,value:"均码"}
+          ]
+        },
+        adias6: {
+          name: '男士黄金套装',
+          imageList:[
+            "http://chifengbei.com/images/shops/demo/demo6.png"
+          ],
+          qty: '13',
+          phone:17501651755,
+          price: 260,
+          color:[
+            {key:"black",value:"黑色"}
+
+          ],
+          size:[
+            {key:39,value:"均码"}
+          ]
+        },
+        adias7: {
+          name: '男士简约商务长裤',
+          imageList:[
+            "http://chifengbei.com/images/shops/demo/demo7.png"
+          ],
+          qty: '13',
+          phone:17501651755,
+          price: 100,
+          color:[
+            {key:"black",value:"黑色"}
+
+          ],
+          size:[
+            {key:39,value:"均码"}
+          ]
+        },
+        adias8: {
+          name: '卡通大字母半袖',
+          imageList:[
+            "http://chifengbei.com/images/shops/demo/demo8.png",
+            "http://chifengbei.com/images/shops/demo/product3.png",
+            "http://chifengbei.com/images/shops/demo/product4.png",
+
+          ],
+          qty: '13',
+          phone:17501651755,
+          price: 80,
+          color:[
+            {key:"black",value:"白色"}
+
+          ],
+          size:[
+            {key:39,value:"xl"},
+            {key:39,value:"xxl"},
+            {key:39,value:"xxxl"},
+          ]
+        },
+        adias9: {
+          name: '男士流行乞丐裤',
+          imageList:[
+            "http://chifengbei.com/images/shops/demo/demo9.png"
+
+          ],
+          qty: '13',
+          phone:17501651755,
+          price: 100,
+          color:[
+            {key:"black",value:"白色"}
+
+          ],
+          size:[
+            {key:39,value:"均码"}
+          ]
         },
     }
 });
