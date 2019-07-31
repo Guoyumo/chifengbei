@@ -16,8 +16,11 @@ require(["zepto", "underscore", "wx",
           $(this).toggleClass("detail-choose");
         })
         $("#detail-buy").on('click', function() {
-          location.href = "/address"
-        })
+          $('.j_show_popup').show();
+        });
+        $('.j_show_popup').on('click',function(){
+          $('.j_show_popup').hide();
+        });
         //计数器
         var MAX = 99,
           MIN = 1;
